@@ -1,14 +1,6 @@
 import "./App.css";
 import Header from "./components/Header";
 
-function Header() {
-  return (
-    <header>
-      <h1>Minha Aplicação React</h1>
-    </header>
-  );
-}
-
 function App() {
   return (
     <div className="card">
