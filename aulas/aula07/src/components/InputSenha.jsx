@@ -1,9 +1,9 @@
 function InputSenha({ register, error }) {
   const regras = {
-    required: "Senha é obrigatória",
+    required: "Senha é obrigatoria",
     minLength: {
       value: 6,
-      message: "A Senha deve ter ao menos 6 caracteres",
+      message: "A senha dever ter ao menos 6 caracteres",
     },
   };
   return (

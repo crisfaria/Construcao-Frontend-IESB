@@ -1,6 +1,6 @@
 function InputNome({ register, error }) {
   const regras = {
-    required: "Nome é obrigatório",
+    required: "Nome é obrigatorio",
   };
   return (
     <>
