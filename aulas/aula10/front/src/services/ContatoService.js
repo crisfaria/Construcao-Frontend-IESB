@@ -33,10 +33,16 @@ function criarContato(contato) {
 
 function atualizarContato(contato) {
   axios
-    .put(import.meta.env.VITE_URL_API, contato)
-    .then((response) => (contato.id = response.id))
-    .catch((error) => new Error("Deu ruim"));
-  return contato;
+    .put(`${url}/${contato.id}`, {
+      nome: contato.nome,
+      telefone: contato.telefone,
+    })
+    .then((response) => {
+      return { sucesso: true, dados: response.data };
+    })
+    .catch((error) => {
+      return { sucesso: false, mensagem: error.message };
+    });
 }
 
 function removerContato(id) {
@@ -61,4 +67,10 @@ function obterContato(id) {
     });
 }
 
-export { carregarContatos, criarContato, removerContato, obterContato };
+export {
+  carregarContatos,
+  criarContato,
+  removerContato,
+  obterContato,
+  atualizarContato,
+};
