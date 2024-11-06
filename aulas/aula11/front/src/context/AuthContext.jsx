@@ -1,31 +1,46 @@
 import { createContext, useState } from "react";
-
-const AuthContext = createContext()
+import { autenticar } from "../services/AuthService";
+const AuthContext = createContext();
 
 function AuthProvider(props) {
-    const [usuario, setUsuario] = useState({email: "", perfil: "", logado: false})
+  const [usuario, setUsuario] = useState({
+    email: "",
+    perfil: "",
+    logado: false,
+  });
 
-    const login = (dados) {
-        if (dados.email === "cris@email.br" && dados.senha === "123456") {
-            setUsuario({email: dados.email, perfil: "aluno", logado: true})
-        }
+  const [msg, setMsg] = useState("");
+
+  const login = async (dados) => {
+    const resposta = await autenticar(dados);
+    if (resposta.sucesso) {
+      setUsuario({ email: dados.email, perfil: "aluno", logado: true });
+    } else {
+      setMsg(resposta.msg);
     }
+  };
 
-    const logout = () => {
-        setUsuario({email: "", perfil: "", logado: false})
-    }
+  const logout = () => {
+    setUsuario({ email: "", perfil: "", logado: false });
+  };
 
-    const contexto = {
-        usuario,
-        login,
-        logout,
-    }
+  const registrar = (dados) => {
+    setUsuario({ email: dados.email, perfil: "aluno", logado: true });
+  };
 
-    return (
-        <AuthContext.Provider value={contexto}>
-            {props.children}
-            </AuthContext.Provider>
-    )
+  const contexto = {
+    usuario,
+    msg,
+    login,
+    logout,
+    registrar,
+  };
+
+  return (
+    <AuthContext.Provider value={contexto}>
+      {props.children}
+    </AuthContext.Provider>
+  );
 }
 
-export { AuthContext, AuthProvider}
+export { AuthContext, AuthProvider };
