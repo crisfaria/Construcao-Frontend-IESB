@@ -4,8 +4,8 @@ import Login from "./pages/Login";
 import Erro404 from "./pages/Erro404";
 import Perfil from "./pages/Perfil";
 import Home from "./pages/Home";
-import { AuthContext } from "./context/AuthContext";
 import Registrar from "./pages/Registrar";
+import { AuthContext } from "./contexts/AuthContext";
 
 function App() {
   const { usuario } = useContext(AuthContext);
@@ -16,7 +16,7 @@ function App() {
         {usuario.logado ? (
           <>
             <Route path="/" element={<Home />} />
-            <Route path="/perfil" element={<Perfil />} />
+            <Route path="/perfil/:id" element={<Perfil />} />
           </>
         ) : (
           <>

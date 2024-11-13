@@ -1,3 +1,15 @@
 {
-  "users": []
+  "users": [
+    {
+      "email": "teste@teste.com",
+      "password": "$2a$10$lx388hG8fhfAHpOWO2/3G.MpbbBWuDx9HX7HuapX8Q1vQeGKbdd.i",
+      "id": 1
+    },
+    {
+      "email": "teste1@teste.com",
+      "password": "$2a$10$Ofsru47T60SFxeb.OH0AeuX8sOy2tJ.93DamN4AkFNrnwKckQMDO.",
+      "perfil": "aluno",
+      "id": 2
+    }
+  ]
 }
